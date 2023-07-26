@@ -8,7 +8,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useState } from 'react';
 import { LogBox } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-
+import colors from './Color';
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -24,10 +24,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={{colors: {background: colors.background}}}>
       <Stack.Navigator
         screenOptions={{
-          headerStyle: { backgroundColor: "#a2a" },
+          headerStyle: { backgroundColor: colors.header },
           headerTintColor: "white",
           headerTitleAlign: "center",
         }}
@@ -46,8 +46,8 @@ export default function App() {
           })}
           initialParams={{changeHeader}}
         />
-        <Stack.Screen name="Add an entry" component={EditEntry} />
-        <Stack.Screen name="Edit entry" component={AddAnEntry} />
+        <Stack.Screen name="Add an entry" component={AddAnEntry} />
+        <Stack.Screen name="Edit entry" component={EditEntry} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -56,7 +56,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#41c04b',
     alignItems: 'center',
     justifyContent: 'center',
   },

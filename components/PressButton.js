@@ -2,15 +2,16 @@ import { StyleSheet, Pressable, View, Text } from 'react-native'
 import React from 'react'
 import colors from "../Color.js"
 
-export default function PressButton({handlePress, text, textColor}) {
+export default function PressButton({handlePress, text, width}) {
   return (
     <Pressable style={({pressed}) => [
         {
-          backgroundColor: pressed ? colors.pressedColor : colors.transparent,
+          backgroundColor: pressed ? colors.inputBackground : colors.header,
         },
-        styles.button,
+        styles.button, 
+        {width:width}
       ]} onPress={handlePress}>
-      <Text style={textColor}>{text}</Text>
+      <Text style={styles.text}>{text}</Text>
     </Pressable>
   )
 }
@@ -18,7 +19,10 @@ export default function PressButton({handlePress, text, textColor}) {
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
-    borderRadius: 15,
+    borderRadius: 5,
     padding: 10,
   },
+  text: {
+    color: "white",
+  }
 })

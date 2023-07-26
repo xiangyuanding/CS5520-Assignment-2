@@ -5,6 +5,7 @@ import AllEntries from './AllEntries';
 import OverLimitEntries from './OverLimitEntries';
 import { AntDesign } from '@expo/vector-icons'; 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import colors from '../Color';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +15,8 @@ export default function Entries({route}) {
     <Tab.Navigator screenOptions={{
         headerShown: false, 
         tabBarActiveTintColor: "orange",
-        tabBarStyle:{backgroundColor: "purple"},
+        tabBarInactiveTintColor: "white",
+        tabBarStyle:{backgroundColor: colors.header},
       }}>
       <Tab.Screen name="All Entries" component={AllEntries} initialParams={{changeHeader}} options={{
           tabBarLabel: 'All Entries',
