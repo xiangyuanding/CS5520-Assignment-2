@@ -9,10 +9,8 @@ export default function AllEntries({route, navigation}) {
 
   const [entryList, setEntryList] = useState([]);
 
-  useEffect(()=>{
-    route.params.changeHeader("All Entries")
-  })
   useEffect(() => {
+    
     const unsubscribe = onSnapshot(collection(db, "entry"), (querySnapshot) => {
         const newList = querySnapshot.docs.map((item) => {
           return { ...item.data(), id: item.id };
@@ -24,7 +22,7 @@ export default function AllEntries({route, navigation}) {
       unsubscribe();
     };
   }, []);
-  console.log(entryList)
+
   
   return (
     <View>

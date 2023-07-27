@@ -5,7 +5,7 @@ import colors from "../Color.js"
 import { Ionicons } from '@expo/vector-icons';
 import { writeToDB } from "../firebase/firestoreHelper";
 
-export default function AddAnEntry() {
+export default function AddAnEntry({navigation}) {
   const [calories, setCalories] = useState("");
   const [description, setDescription] = useState("");
 
@@ -28,6 +28,7 @@ export default function AddAnEntry() {
     }
     writeToDB({calories, description, overLimit});
     reset();
+    navigation.goBack();
   }
 
   return (

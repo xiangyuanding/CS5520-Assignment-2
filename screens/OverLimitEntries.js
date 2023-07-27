@@ -9,9 +9,6 @@ export default function OverLimitEntries({route, navigation}) {
 
   const [entryList, setEntryList] = useState([]);
 
-  useEffect(()=>{
-    route.params.changeHeader("Over-limit Entries")
-  })
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "entry"), (querySnapshot) => {
         const newList = querySnapshot.docs.map((item) => {
@@ -25,7 +22,6 @@ export default function OverLimitEntries({route, navigation}) {
       unsubscribe();
     };
   }, []);
-  console.log(entryList)
   
   return (
     <View>

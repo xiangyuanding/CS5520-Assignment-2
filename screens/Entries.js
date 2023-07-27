@@ -10,7 +10,7 @@ import colors from '../Color';
 const Tab = createBottomTabNavigator();
 
 export default function Entries({route}) {
-  const changeHeader = route.params.changeHeader;
+
   return (
     <Tab.Navigator screenOptions={{
         headerShown: false, 
@@ -18,13 +18,13 @@ export default function Entries({route}) {
         tabBarInactiveTintColor: "white",
         tabBarStyle:{backgroundColor: colors.header},
       }}>
-      <Tab.Screen name="All Entries" component={AllEntries} initialParams={{changeHeader}} options={{
+      <Tab.Screen name="All Entries" component={AllEntries} options={{
           tabBarLabel: 'All Entries',
           tabBarIcon: ({color}) => (
             <AntDesign name="Trophy" size={24} color={color} />
           ),
         }} />
-      <Tab.Screen name="Over-limit Entries" component={OverLimitEntries} initialParams={{changeHeader}} options={{
+      <Tab.Screen name="Over-limit Entries" component={OverLimitEntries} options={{
           tabBarLabel: 'Over-limit Entries',
           tabBarIcon: ({color}) => (
             <AntDesign color={color} name="exclamation" size={24} />

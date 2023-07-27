@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import colors from '../Color'
 import PressButton from '../components/PressButton'
@@ -10,12 +10,32 @@ export default function EditEntry({route:{params:{calories, description, id, ove
   const [overLimitCheck, setOverLimitCheck] = useState(overLimit);
 
   function handleDelete(){
-    deleteFromDB(id);
-    navigation.goBack();
+    Alert.alert("Delete this record?", "", [{
+      text: 'OK',
+      onPress: () => {    
+        deleteFromDB(id);
+        navigation.goBack();
+      },
+    },
+    {
+      text: 'Cancel',
+      onPress: () => {return},
+    }])
   }
   function handleCheck(){
-    setToDB({calories, description, id, overLimit:false});
-    setOverLimitCheck(false);
+    Alert.alert("Mark as reviewed?", "", [{
+      text: 'OK',
+      onPress: () => {    
+        setToDB({calories, description, id, overLimit:false});
+        setOverLimitCheck(false);
+      },
+    },
+    {
+      text: 'Cancel',
+      onPress: () => {return},
+    }])
+
+
   }
 
   return (
@@ -49,6 +69,9 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     alignItems: "center",
     justifyContent: "center",
+    shadowColor: colors.shadowColor,
+    shadowOpacity: 5,
+    elevation: 10,
   },
   text: {
     color: colors.header,
