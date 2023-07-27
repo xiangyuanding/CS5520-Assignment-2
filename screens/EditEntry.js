@@ -45,7 +45,7 @@ export default function EditEntry({route:{params:{calories, description, id, ove
       <View style={styles.buttons}>
         <PressButton 
           handlePress={handleDelete} 
-          text={<FontAwesome5 name="trash-alt" size={20} color="white" />} 
+          text={<AntDesign name="delete" size={20} color="white" />} 
           width={70} />
         {overLimitCheck ? 
         <PressButton 
