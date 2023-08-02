@@ -1,0 +1,37 @@
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AllEntries from './AllEntries';
+import OverLimitEntries from './OverLimitEntries';
+import { AntDesign } from '@expo/vector-icons'; 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import colors from '../Color';
+
+const Tab = createBottomTabNavigator();
+
+export default function Entries({route}) {
+
+  return (
+    <Tab.Navigator screenOptions={{
+        headerShown: false, 
+        tabBarActiveTintColor: "orange",
+        tabBarInactiveTintColor: "white",
+        tabBarStyle:{backgroundColor: colors.header},
+      }}>
+      <Tab.Screen name="All Entries" component={AllEntries} options={{
+          tabBarLabel: 'All Entries',
+          tabBarIcon: ({color}) => (
+            <AntDesign name="Trophy" size={24} color={color} />
+          ),
+        }} />
+      <Tab.Screen name="Over-limit Entries" component={OverLimitEntries} options={{
+          tabBarLabel: 'Over-limit Entries',
+          tabBarIcon: ({color}) => (
+            <AntDesign color={color} name="exclamation" size={24} />
+          ),
+        }} />
+    </Tab.Navigator>
+  )
+}
+
+const styles = StyleSheet.create({})
